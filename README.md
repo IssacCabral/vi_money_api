@@ -1,6 +1,6 @@
 ## Description
 
-every month it is difficult to control expenses and financial entries. With that in mind, I created a system to help me better manage this flow of inputs and outputs.
+Every month it is difficult to control expenses and financial entries. With that in mind, I created a system to help me better manage this flow of inputs and outputs.
 
 ## Tecnologies
 
