@@ -1,3 +1,4 @@
+import { Inject } from '@nestjs/common';
 import { IHash } from 'src/data/protocols/hash';
 import { IUserRepository } from 'src/data/repositories/user-repository';
 import { BusinessError } from 'src/domain/errors/business-error';
@@ -6,10 +7,16 @@ import {
   CreateUserReturns,
 } from 'src/domain/types/user-params';
 import { ICreateUserUseCase } from 'src/domain/usecases/user/create-user';
+import {
+  HASH_SERVICE,
+  USER_REPOSITORY,
+} from 'src/infra/modules/user/user.providers';
 
 export class DbCreateUserUseCase implements ICreateUserUseCase {
   constructor(
+    @Inject(USER_REPOSITORY)
     private readonly userRepository: IUserRepository,
+    @Inject(HASH_SERVICE)
     private readonly hashService: IHash,
   ) {}
 
