@@ -1,0 +1,6 @@
+// REPOSITORIES/SERVICES
+export const USER_REPOSITORY = Symbol('USER_REPOSITORY');
+export const HASH_SERVICE = Symbol('HASH_SERVICE');
+
+// USECASES
+export const CREATE_USER_USE_CASE = Symbol('CREATE_USER_USE_CASE');
