@@ -8,17 +8,14 @@ datasource db {
 }
 
 model User {
-  id String @id @unique @default(uuid())
-
-  email    String @unique @db.VarChar(50)
-  password String @db.VarChar(100)
-  username String @unique @db.VarChar(50)
-
+  id           String        @id @unique @default(uuid())
+  email        String        @unique @db.VarChar(50)
+  password     String        @db.VarChar(100)
+  username     String        @unique @db.VarChar(50)
   transactions Transaction[]
   categories   Category[]
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @default(now()) @updatedAt @map("updated_at")
 
   @@map("users")
 }
@@ -31,19 +28,15 @@ enum TransactionTypes {
 }
 
 model Transaction {
-  id String @id @unique @default(uuid())
-
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
-
-  Category   Category? @relation(fields: [categoryId], references: [id])
+  id         String           @id @unique @default(uuid())
+  User       User?            @relation(fields: [userId], references: [id])
+  userId     String?
+  Category   Category?        @relation(fields: [categoryId], references: [id])
   categoryId String?
-
-  title  String           @db.VarChar(150)
-  type   TransactionTypes
-  amount Float
-
-  createdAt DateTime @default(now()) @map("created_at")
+  title      String           @db.VarChar(150)
+  type       TransactionTypes
+  amount     Float
+  createdAt  DateTime         @default(now()) @map("created_at")
 
   @@map("transactions")
 }
@@ -51,10 +44,10 @@ model Transaction {
 model Category {
   id String @id @unique @default(uuid())
 
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
-
+  User         User?         @relation(fields: [userId], references: [id])
+  userId       String?
   transactions Transaction[]
+  name         String
 
   @@map("categories")
 }
