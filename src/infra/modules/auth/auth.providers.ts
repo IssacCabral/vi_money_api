@@ -1,0 +1,5 @@
+// REPOSITORIES/SERVICES
+export const JWT_SERVICE = Symbol('JWT_SERVICE');
+
+// USECASES
+export const AUTH_USE_CASE = Symbol('AUTH_USE_CASE');
