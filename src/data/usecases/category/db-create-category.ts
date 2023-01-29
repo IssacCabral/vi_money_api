@@ -25,6 +25,16 @@ export class DbCreateCategoryUseCase implements ICreateCategoryUseCase {
       throw new BusinessError('User is not found', 404);
     }
 
+    const userCategoryAlreadyExists =
+      await this.categoryRepository.findUserCategoryByName(
+        params.userId,
+        params.name,
+      );
+
+    if (userCategoryAlreadyExists) {
+      throw new BusinessError('User already owns this category', 400);
+    }
+
     const category = await this.categoryRepository.createCategory(params);
 
     return {

@@ -19,4 +19,18 @@ export class PrismaCategoryRepository implements ICategoryRepository {
 
     return createdCategory;
   }
+
+  async findUserCategoryByName(
+    userId: string,
+    categoryName: string,
+  ): Promise<ICategory> {
+    return await this.prismaService.category.findFirst({
+      where: {
+        userId,
+        AND: {
+          name: categoryName,
+        },
+      },
+    });
+  }
 }

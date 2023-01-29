@@ -3,4 +3,8 @@ import { CreateCategoryParams } from 'src/domain/types/category-params';
 
 export interface ICategoryRepository {
   createCategory(category: CreateCategoryParams): Promise<ICategory>;
+  findUserCategoryByName(
+    userId: string,
+    categoryName: string,
+  ): Promise<ICategory | null>;
 }
