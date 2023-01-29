@@ -21,4 +21,4 @@ const providers: Provider[] = [
   providers: [...providers],
   exports: [...providers],
 })
-export class DbCreateUserUseCaseModule {}
+export class DbCreateCategoryUseCaseModule {}

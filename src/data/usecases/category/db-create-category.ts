@@ -10,7 +10,7 @@ import { ICreateCategoryUseCase } from 'src/domain/usecases/category/create-cate
 import { CATEGORY_REPOSITORY } from 'src/infra/modules/category/category.providers';
 import { USER_REPOSITORY } from 'src/infra/modules/user/user.providers';
 
-export class DbCreateCategory implements ICreateCategoryUseCase {
+export class DbCreateCategoryUseCase implements ICreateCategoryUseCase {
   constructor(
     @Inject(CATEGORY_REPOSITORY)
     private categoryRepository: ICategoryRepository,
