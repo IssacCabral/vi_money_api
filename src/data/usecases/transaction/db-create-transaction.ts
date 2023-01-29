@@ -1,16 +1,20 @@
+import { Inject } from '@nestjs/common';
 import { ICategoryRepository } from 'src/data/repositories/category-repository';
 import { ITransactionRepository } from 'src/data/repositories/transaction-repository';
-import { IUserRepository } from 'src/data/repositories/user-repository';
 import { BusinessError } from 'src/domain/errors/business-error';
 import {
   CreateTransactionParams,
   CreateTransactionReturns,
 } from 'src/domain/types/transaction-params';
 import { ICreateTransactionUseCase } from 'src/domain/usecases/transaction/create-transaction';
+import { CATEGORY_REPOSITORY } from 'src/infra/modules/category/category.providers';
+import { TRANSACTION_REPOSITORY } from 'src/infra/modules/transaction/transaction.providers';
 
 export class DbCreateTransactionUseCase implements ICreateTransactionUseCase {
   constructor(
+    @Inject(CATEGORY_REPOSITORY)
     private readonly categoryRepository: ICategoryRepository,
+    @Inject(TRANSACTION_REPOSITORY)
     private readonly transactionRepository: ITransactionRepository,
   ) {}
 
