@@ -21,9 +21,10 @@ export class CreateUserController {
   @Post()
   async handle(@Body() createCategoryDto: CreateCategoryDto) {
     try {
-      const category = await this.createCategoryUseCase.execute(
-        createCategoryDto,
-      );
+      const category = await this.createCategoryUseCase.execute({
+        name: createCategoryDto.name,
+        userId: '1',
+      });
       return category;
     } catch (error) {
       console.log(error);
