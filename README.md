@@ -14,3 +14,10 @@ Every month it is difficult to control expenses and financial entries. With that
 ### Database initial schema
 
 <img src="./assets/vi_money_schema.png"></img>
+
+#### Next endpoints
+
+- Create Transactions
+- List Transactions
+- Exclude Transactions
+- List Categories
