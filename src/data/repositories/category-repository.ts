@@ -7,4 +7,5 @@ export interface ICategoryRepository {
     userId: string,
     categoryName: string,
   ): Promise<ICategory | null>;
+  findCategoryById(id: string): Promise<ICategory | null>;
 }

@@ -36,7 +36,9 @@ model Transaction {
   title      String           @db.VarChar(150)
   type       TransactionTypes
   amount     Float
-  createdAt  DateTime         @default(now()) @map("created_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 
   @@map("transactions")
 }

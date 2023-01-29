@@ -22,7 +22,7 @@ export class DbCreateCategoryUseCase implements ICreateCategoryUseCase {
       );
 
     if (userCategoryAlreadyExists) {
-      throw new BusinessError('User already owns this category', 400);
+      throw new BusinessError('This user is already owns this category');
     }
 
     const category = await this.categoryRepository.createCategory(params);

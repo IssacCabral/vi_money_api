@@ -9,7 +9,6 @@ export class PrismaCategoryRepository implements ICategoryRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createCategory(category: CreateCategoryParams): Promise<ICategory> {
-    console.log(category);
     const createdCategory = await this.prismaService.category.create({
       data: {
         name: category.name,
@@ -30,6 +29,14 @@ export class PrismaCategoryRepository implements ICategoryRepository {
         AND: {
           name: categoryName,
         },
+      },
+    });
+  }
+
+  async findCategoryById(id: string): Promise<ICategory> {
+    return await this.prismaService.category.findUnique({
+      where: {
+        id,
       },
     });
   }
