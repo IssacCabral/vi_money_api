@@ -1,6 +1,12 @@
 import { ITransaction } from 'src/domain/entities/transaction';
-import { PaginationData } from 'src/domain/types/pagination-params';
+import {
+  PaginationData,
+  PaginationParams,
+} from 'src/domain/types/pagination-params';
 
 export interface IFindTransactionsByUserIdUseCase {
-  execute(userId: string): Promise<PaginationData<ITransaction>>;
+  execute(
+    pagination: PaginationParams,
+    userId: string,
+  ): Promise<PaginationData<ITransaction>>;
 }

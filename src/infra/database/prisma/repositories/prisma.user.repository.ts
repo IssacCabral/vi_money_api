@@ -9,8 +9,14 @@ export class PrismaUserRepository implements IUserRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createUser(user: CreateUserParams): Promise<IUser> {
+    const { email, password, username } = user;
+
     const createdUser = await this.prismaService.user.create({
-      data: user,
+      data: {
+        email,
+        password,
+        username,
+      },
     });
 
     return createdUser;
