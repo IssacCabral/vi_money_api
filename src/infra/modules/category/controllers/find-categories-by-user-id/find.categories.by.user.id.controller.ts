@@ -27,14 +27,14 @@ export class FindCategoriesByUserIdController {
   ) {
     try {
       const { page, limit } = findCategoriesByUserIdDto;
-      const { userId } = request.user;
+      const { sub } = request.user;
 
       const categories = await this.findCategoriesByUserIdUseCase.execute(
         {
           page: Number(page),
           limit: Number(limit),
         },
-        userId,
+        sub,
       );
       return categories;
     } catch (error) {

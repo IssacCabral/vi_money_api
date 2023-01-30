@@ -10,12 +10,16 @@ export class DbDeleteTransactionUseCase implements IDeleteTransactionUseCase {
     private readonly transactionRepository: ITransactionRepository,
   ) {}
 
-  async execute(transactionId: string): Promise<void> {
+  async execute(transactionId: string, userId: string): Promise<void> {
     const transcationExists =
       await this.transactionRepository.findTransactionByid(transactionId);
 
     if (!transcationExists) {
       throw new BusinessError('Transaction is not found', 404);
+    }
+
+    if (transcationExists.userId !== userId) {
+      throw new BusinessError('Invalid Transaction');
     }
 
     await this.transactionRepository.deleteTransaction(transactionId);

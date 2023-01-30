@@ -52,4 +52,16 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       data: data as ITransaction[],
     };
   }
+
+  async findTransactionByid(trnascationId: string): Promise<ITransaction> {
+    return (await this.prismaService.transaction.findUnique({
+      where: { id: trnascationId },
+    })) as ITransaction;
+  }
+
+  async deleteTransaction(transactionId: string): Promise<void> {
+    await this.prismaService.transaction.delete({
+      where: { id: transactionId },
+    });
+  }
 }

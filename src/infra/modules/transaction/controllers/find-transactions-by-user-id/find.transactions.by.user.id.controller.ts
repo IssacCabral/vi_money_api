@@ -27,14 +27,14 @@ export class FindTransactionsByUserIdController {
   ) {
     try {
       const { page, limit } = findTransactionsByUserIdDto;
-      const { userId } = request.user;
+      const { sub } = request.user;
 
       const transactions = await this.findTransactionsByUserIdUseCase.execute(
         {
           page: Number(page),
           limit: Number(limit),
         },
-        userId,
+        sub,
       );
       return transactions;
     } catch (error) {

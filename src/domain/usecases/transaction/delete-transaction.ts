@@ -1,3 +1,3 @@
 export interface IDeleteTransactionUseCase {
-  execute(transactionId: string): Promise<void>;
+  execute(transactionId: string, userId: string): Promise<void>;
 }
