@@ -18,6 +18,6 @@ Every month it is difficult to control expenses and financial entries. With that
 #### Next endpoints
 
 - Create Transactions ok
-- List Transactions
+- List Transactions ok
 - Exclude Transactions
 - List Categories
