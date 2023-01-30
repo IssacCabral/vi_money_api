@@ -16,4 +16,5 @@ export interface ICategoryRepository {
     pagination: PaginationParams,
     userId: string,
   ): Promise<PaginationData<ICategory>>;
+  deleteCategory(categoryId: string): Promise<void>;
 }
