@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { ITransactionRepository } from 'src/data/repositories/transaction-repository';
+import { BusinessError } from 'src/domain/errors/business-error';
 import { IDeleteTransactionUseCase } from 'src/domain/usecases/transaction/delete-transaction';
 import { TRANSACTION_REPOSITORY } from 'src/infra/modules/transaction/transaction.providers';
 
@@ -9,7 +10,14 @@ export class DbDeleteTransactionUseCase implements IDeleteTransactionUseCase {
     private readonly transactionRepository: ITransactionRepository,
   ) {}
 
-  execute(transactionId: string): Promise<void> {
-    throw new Error('Method not implemented.');
+  async execute(transactionId: string): Promise<void> {
+    const transcationExists =
+      await this.transactionRepository.findTransactionByid(transactionId);
+
+    if (!transcationExists) {
+      throw new BusinessError('Transaction is not found', 404);
+    }
+
+    await this.transactionRepository.deleteTransaction(transactionId);
   }
 }

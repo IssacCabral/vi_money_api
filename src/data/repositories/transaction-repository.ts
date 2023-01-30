@@ -13,5 +13,6 @@ export interface ITransactionRepository {
     pagination: PaginationParams,
     userId: string,
   ): Promise<PaginationData<ITransaction>>;
+  findTransactionByid(trnascationId: string): Promise<ITransaction | null>;
   deleteTransaction(transactionId: string): Promise<void>;
 }
