@@ -20,4 +20,5 @@ Every month it is difficult to control expenses and financial entries. With that
 - Create Transactions ok
 - List Transactions ok
 - Exclude Transactions
-- List Categories
+- Exclude categories
+- List Categories ok
