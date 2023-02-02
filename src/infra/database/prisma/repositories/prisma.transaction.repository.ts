@@ -34,6 +34,9 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       },
       take: pagination.limit,
       skip: (pagination.page - 1) * pagination.limit,
+      include: {
+        Category: true,
+      },
     });
 
     const total = await this.prismaService.transaction.count({
